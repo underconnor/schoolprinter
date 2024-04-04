@@ -1,0 +1,370 @@
+;(c) Copyright 2019 HP Development Company, L.P.
+
+[Version]
+Signature="$Windows NT$"
+Class=Printer
+Provider=%PROVIDER%
+CatalogFile = ssj4m.cat
+DriverVer= 09/03/2019, 3.13.59.00
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+DriverIsolation=2
+
+;
+; The Manufacturer section lists all of the manufacturers that we will
+; display in the Dialog box
+
+[Manufacturer]
+%PROVIDER% = MODEL,NTx86,NTx86.5.1,NTx86.6.0,NTamd64,NTamd64.6.0
+
+; Model section for Windows 2000 and XP
+[MODEL]
+"Samsung M203x Series" = DRVINSTALL, LPTENUM\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, USBPRINT\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, WSDPRINT\SamsungM203x_Series874D
+
+[MODEL.NTx86]
+"Samsung M203x Series" = DRVINSTALL, LPTENUM\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, USBPRINT\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, WSDPRINT\SamsungM203x_Series874D
+
+[MODEL.NTx86.5.1]
+"Samsung M203x Series" = DRVINSTALL, LPTENUM\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, USBPRINT\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, WSDPRINT\SamsungM203x_Series874D
+
+[MODEL.NTx86.6.0]
+"Samsung M203x Series" = DRVINSTALL, LPTENUM\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, USBPRINT\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, WSDPRINT\SamsungM203x_Series874D
+
+[MODEL.NTamd64]
+"Samsung M203x Series" = DRVINSTALL, LPTENUM\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, USBPRINT\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, WSDPRINT\SamsungM203x_Series874D
+
+[MODEL.NTamd64.6.0]
+"Samsung M203x Series" = DRVINSTALL, LPTENUM\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, USBPRINT\SamsungM203x_Series874D
+"Samsung M203x Series" = DRVINSTALL, WSDPRINT\SamsungM203x_Series874D
+
+[OEM URLS]
+%PROVIDER% = "https://www.samsung.com/"
+
+;
+; Installer Sections
+;
+; These sections control file installation, and reference all files that
+; need to be copied. If the section name will be assumed to be the driver
+; file, unless there is an explicit DriverFile section listed.
+;
+
+; Installation section for Win2000 and XP
+[DRVINSTALL]
+CopyFiles=DRVFILES,LANGMONFILES,COINSTFILES,PRPROCFILES
+DataSection=DRVCONFIG
+DataFile=ssj4mpp.dll
+CopyINF=HPRestStub.inf
+[DRVINSTALL.NTx86.5.1]
+CopyFiles=DRVFILES,LANGMONFILES,COINSTFILES,PRPROCFILES
+DataSection=DRVCONFIG
+DataFile=ssj4mpp.dll
+CopyINF=HPRestStub.inf
+
+[DRVINSTALL.NTx86.6.0]
+CopyFiles=DRVFILES,LANGMONFILES,COINSTFILES,PRPROCFILES
+DataSection=DRVCONFIG
+DataFile=ssj4mpp.dll
+AddReg = DRVINSTALL.NTx86.6.0.AddReg
+CopyINF=HPRestStub.inf
+
+[DRVINSTALL.NTx86.6.0.AddReg]
+;LiteSM
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDSM%",AppName,0x00000000,ssj4msm.exe
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDSM%",AppPath,0x00000000,"%51%\drivers\w32x86\3"
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDSM%",Policy,0x00010001,3
+;AMPV
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDAM%",AppName,0x00000000,ssj4mam.exe
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDAM%",AppPath,0x00000000,"%51%\drivers\w32x86\3"
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDAM%",Policy,0x00010001,3
+[DRVINSTALL.NTamd64.6.0]
+CopyFiles=DRVFILES,LANGMONFILES,COINSTFILES,PRPROCFILES
+DataSection=DRVCONFIG
+DataFile=ssj4mpp.dll
+AddReg = DRVINSTALL.NTamd64.6.0.AddReg
+CopyINF=HPRestStub.inf
+
+[DRVINSTALL.NTamd64.6.0.AddReg]
+;LiteSM
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDSM%",AppName,0x00000000,ssj4msm.exe
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDSM%",AppPath,0x00000000,"%51%\drivers\x64\3"
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDSM%",Policy,0x00010001,3
+
+;AMPV
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDAM%",AppName,0x00000000,ssj4mam.exe
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDAM%",AppPath,0x00000000,"%51%\drivers\x64\3"
+HKLM,"SOFTWARE\Microsoft\Internet Explorer\Low Rights\ElevationPolicy\%GUIDAM%",Policy,0x00010001,3
+;
+; Data Sections
+;
+; These sections contain data that is shared between devices.
+;
+[DRVCONFIG]
+DriverFile=ssj4m.dll
+ConfigFile=ssj4mdu.dll
+HelpFile=ssj4men.chm
+LanguageMonitor="ssj4m Langmon,ssj4mlm.dll"
+PrintProcessor="ssj4mPC,ssj4mpc.dll"
+
+[DRVINSTALL.CoInstallers]
+AddReg=COINST.AddReg
+CopyFiles=COINSTFILES
+[DRVINSTALL.NTx86.5.1.CoInstallers]
+AddReg=COINST.AddReg
+CopyFiles=COINSTFILES
+
+[DRVINSTALL.NTx86.6.0.CoInstallers]
+AddReg=COINST.AddReg
+CopyFiles=COINSTFILES
+
+[DRVINSTALL.NTamd64.6.0.CoInstallers]
+AddReg=COINST.AddReg
+CopyFiles=COINSTFILES
+
+[COINST.AddReg]
+HKR,,CoInstallers32,0x10000,"ssj4mci.dll,CoDeviceInstall"
+
+;------------------------------------------------------
+
+; Copy Sections
+;
+; Lists of files that are actually copied. These sections are referenced
+; from the installer sections, above. Only create a section if it contains
+; two or more files (if we only copy a single file, identify it in the
+; installer section, using the @filename notation)
+;
+[LANGMONFILES]
+ssj4mlm.dll,itdrvlm.dll
+
+[PRPROCFILES]
+ssj4mpc.dll,  itdrvpc.dll
+
+[COINSTFILES]
+ssj4mci.dll,  coinst.dll
+ssj4mci.exe,  coinst.exe
+
+[DRVFILES]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Driver Core files and DLLs and Other files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4m.dll,    itdrv.dll
+ssj4mdu.dll,  itdrvdu.dll
+ssj4muc.dll,  itdrvuc.dll
+ssj4mur.dll,  itdrvur.dll
+ssj4mpp.dll,  itdrvpp.dll
+ssj4mf.xml,   itdrvf.xml
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; FrameBuffer files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mlf.dll,  itdrvlf.dll
+ssj4mum.dll,  itdrvum.dll
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DCU (Driver Configuration Utility)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mcu.dll,	itdrvcu.dll
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SmartCMS files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4msc.cts
+ssj4msc.dll,  itdrvsc.dll
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Manual Duplex files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mm1.bmp,  itdrvm1.bmp
+ssj4mm2.bmp,  itdrvm2.bmp
+ssj4mm3.bmp,  itdrvm3.bmp
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Lite Status Monitor files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4msm.exe,  itdrvsm.exe
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Model dependent script files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mc.xml
+ssj4mp.xml
+ssj4mpp.ver
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Bmp files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mimg.cab
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SNMP files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mn.dll,   itdrvn.dll
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Eco Confirm files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4man.dll,   itdrvan.dll
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Localized XML files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mstr.cab
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Help files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mchm.cab
+ssj4men.chm,  itdrven.chm 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AMPV files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mam.exe,  itdrvAM.exe
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+; Web Agreement files 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+ssj4mdr.exe, itdrvDR.exe 
+ssj4mua.dll, itdrvUA.dll 
+
+;
+; Color profiles go to the colors directory.  All other files to the the
+; system directory
+;
+
+[DestinationDirs]
+DefaultDestDir=66000
+LANGMONFILES=66002
+COINSTFILES = 66002
+PRPROCFILES=66001
+
+[SourceDisksNames]
+3 = %DISK_NAME%,,,"i386"
+2 = %DISK_NAME%,,,"Common"
+1 = %DISK_NAME%,,,
+
+[SourceDisksNames.amd64]
+3 = %DISK_NAME%,,,"amd64"
+2 = %DISK_NAME%,,,"Common"
+1 = %DISK_NAME%,,,
+
+[SourceDisksFiles]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Driver Core files and DLLs and Other files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+itdrv.dll       = 3
+itdrvdu.dll     = 3
+itdrvuc.dll     = 3
+itdrvur.dll     = 3
+itdrvpp.dll     = 2
+itdrvf.xml      = 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; FrameBuffer files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+itdrvlf.dll     = 3
+itdrvum.dll  = 3
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DCU (Driver Configuration Utility)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+itdrvcu.dll			= 3
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SmartCMS files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4msc.cts    = 2
+itdrvsc.dll     = 3
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Manual Duplex files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+itdrvm1.bmp     = 2
+itdrvm2.bmp     = 2
+itdrvm3.bmp     = 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Lite Status Monitor files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+itdrvsm.exe     = 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Model dependent script files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mc.xml	= 1
+ssj4mp.xml	= 1
+ssj4mpp.ver	= 1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Bmp files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mimg.cab  = 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SNMP files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+itdrvn.dll      = 3
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Confirm files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+itdrvan.dll     = 3
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Localized XML files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mstr.cab = 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Help files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ssj4mchm.cab = 2
+itdrven.chm 	= 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; COINSTFILES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+coinst.dll      = 3 
+coinst.exe      = 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; LANGMONFILES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+itdrvlm.dll     = 3
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; PRPROCFILES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+itdrvpc.dll     = 3
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AMPV FILES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+itdrvAM.exe     = 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+; Web Agreement files 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+itdrvDR.exe     = 3 
+itdrvUA.dll     = 3 
+
+[PrinterPackageInstallation.x86]
+PackageAware=TRUE
+[PrinterPackageInstallation.amd64]
+PackageAware=TRUE
+
+[Strings]
+PROVIDER = "Samsung"
+DISK_NAME = "Samsung Printer Driver Installation CD"
+GUIDSM = "{05E5E4F7-46DA-41e9-92E2-97003777571A}"
+GUIDAM = "{059717D6-95A3-4b00-997F-E17904D4AB2D}"
